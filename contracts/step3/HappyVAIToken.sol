@@ -29,6 +29,8 @@ contract HappyVAIToken {
         address _to,
         uint256 _value
     ) external returns (bool success) {
+        require(_to != address(0));
+
         balanceOf[msg.sender] -= _value;
 
         unchecked {
@@ -45,15 +47,14 @@ contract HappyVAIToken {
         address _to,
         uint256 _value
     ) external returns (bool success) {
+        require(_to != address(0));
+
         uint256 allowed = allowance[_from][msg.sender]; // Saves gas for limited approvals.
 
-        // En muchisimos casos si se quiere dar a una addreess permiso ilimitados para gastar tokens, se le asigna un permiso de type(uint256).max o -1.
-        // Dado que el usuario acepto darle permisos al address para mover ilimitadamente, no hace fata restar el amount al allowed y de esta forma estamos reduciento gas
         if (allowed != type(uint256).max)
             allowance[_from][msg.sender] = allowed - _value;
 
         balanceOf[_from] -= _value;
-
         unchecked {
             balanceOf[_to] += _value;
         }
@@ -67,6 +68,7 @@ contract HappyVAIToken {
         address spender,
         uint256 amount
     ) external virtual returns (bool) {
+        require(spender != address(0));
         allowance[msg.sender][spender] = amount;
 
         emit Approval(msg.sender, spender, amount);

@@ -1,6 +1,5 @@
 // SPDX-License-Identifier: UNLICENSED
-pragma solidity 0.8.18;
-// pragma solidity 0.7.0;
+pragma solidity 0.7.0;
 
 // Uncomment this line to use console.log
 // import "hardhat/console.sol";
@@ -41,7 +40,6 @@ contract VAIToken {
         address _to,
         uint256 _value
     ) public returns (bool success) {
-        uint256 allowance = allowed[_from][msg.sender];
         balances[_to] += _value;
         balances[_from] -= _value;
         allowed[_from][msg.sender] -= _value;

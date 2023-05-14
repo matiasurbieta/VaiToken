@@ -1,7 +1,5 @@
 // SPDX-License-Identifier: MIT
-pragma solidity 0.8.18;
-// pragma solidity 0.7.0;
-
+pragma solidity 0.7.0;
 
 import "@openzeppelin/contracts/utils/math/SafeMath.sol";
 
@@ -40,7 +38,7 @@ contract VAIToken2 {
         address _to,
         uint256 _value
     ) public returns (bool success) {
-        // Optional require(_to != address(0));
+        require(_to != address(0));
         balances[msg.sender] = balances[msg.sender].sub(_value);
         balances[_to] = balances[_to].add(_value);
         emit Transfer(msg.sender, _to, _value);
@@ -52,7 +50,7 @@ contract VAIToken2 {
         address _to,
         uint256 _value
     ) public returns (bool success) {
-        // Optional require(_to != address(0));
+        require(_to != address(0));
         uint256 allowedAmount = allowed[_from][msg.sender];
         balances[_from] = balances[_from].sub(_value);
         balances[_to] = balances[_to].add(_value);
@@ -65,6 +63,7 @@ contract VAIToken2 {
         address _spender,
         uint256 _value
     ) public returns (bool success) {
+        require(_spender != address(0));
         allowed[msg.sender][_spender] = _value;
         emit Approval(msg.sender, _spender, _value);
         return true;
