@@ -1,5 +1,7 @@
 // SPDX-License-Identifier: UNLICENSED
-pragma solidity 0.7.0;
+
+//pragma solidity 0.7.0; Let's pretend that this is the line of the contract
+pragma solidity 0.8.18; // don't look at this line
 
 // Uncomment this line to use console.log
 // import "hardhat/console.sol";
@@ -17,13 +19,13 @@ contract VAIToken {
         uint256 _initialAmount,
         string memory _name,
         uint8 _decimals,
-        string memory _sybol
+        string memory _symbol
     ) {
         balances[msg.sender] = _initialAmount;
         totalSupply = _initialAmount;
         name = _name;
         decimals = _decimals;
-        symbol = _sybol;
+        symbol = _symbol;
     }
 
     function transfer(
