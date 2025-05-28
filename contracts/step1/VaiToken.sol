@@ -1,7 +1,7 @@
 // SPDX-License-Identifier: UNLICENSED
 
-//pragma solidity 0.7.0; Let's pretend that this is the line of the contract
-pragma solidity 0.8.18; // don't look at this line
+pragma solidity 0.7.0; //Let's pretend that this is the line of the contract
+//pragma solidity 0.8.18; // don't look at this line
 
 // Uncomment this line to use console.log
 // import "hardhat/console.sol";
